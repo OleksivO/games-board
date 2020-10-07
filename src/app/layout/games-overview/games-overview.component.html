@@ -1,0 +1,6 @@
+<gb-games-categories
+  [selectedCategory]="selectedCategory$ | async"
+  (selectCategory)="onCategorySelect($event)">
+</gb-games-categories>
+<gb-games-list [games]="games$ | async"></gb-games-list>
+

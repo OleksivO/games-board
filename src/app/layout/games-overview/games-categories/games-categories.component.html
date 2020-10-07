@@ -1,0 +1,8 @@
+<nav class="categories-container">
+  <a
+    *ngFor="let category of categories"
+    class="categories-container__item"
+    (click)="onCategorySelect(category.value)"
+    [class.active]="selectedCategory === category.value"
+  >{{category.title}}</a>
+</nav>
