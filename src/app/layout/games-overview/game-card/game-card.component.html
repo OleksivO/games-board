@@ -12,7 +12,8 @@
       {{game.jackpot | currency: 'GBP'}}
     </div>
     <div class="game-card__container--play">
-      <img src="./assets/icons/play-button.svg"/>
+      <img src="./assets/icons/play-button.svg" [alt]="game.name"/>
+      <div class="game-title">{{game.name}}</div>
     </div>
   </div>
 </div>

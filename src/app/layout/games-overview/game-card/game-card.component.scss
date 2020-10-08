@@ -32,6 +32,7 @@ $dark-green: #0F330A;
 
     &--play {
       display: none;
+      flex-direction: column;
       position: absolute;
       height: 100%;
       width: 100%;
@@ -41,6 +42,14 @@ $dark-green: #0F330A;
       align-items: center;
       justify-content: center;
       background-color: rgb(0, 0, 0, 0.6);
+
+      .game-title {
+        color: #fff;
+        font-weight: bold;
+        position: absolute;
+        bottom: 10px;
+        font-size: 20px;
+      }
 
       img {
         height: 40px;
