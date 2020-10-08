@@ -6,7 +6,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   styleUrls: ['./games-categories.component.scss']
 })
 export class GamesCategoriesComponent {
-  categories: any[] = [
+  categories: Array<{title: string, value: string}> = [
     {
       title: 'New Games',
       value: 'new'
@@ -48,7 +48,7 @@ export class GamesCategoriesComponent {
       value: 'other'
     }
   ];
-  @Input() selectedCategory = 'new';
+  @Input() selectedCategory;
   @Output() selectCategory: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {}

@@ -18,7 +18,7 @@ $dark-green: #0F330A;
       top: 0;
       background-color: rgb(0, 0, 0, 0.3);
       color: #fff;
-      z-index: 1;
+      z-index: 2;
       position: absolute;
       display: flex;
       justify-content: center;
@@ -28,6 +28,34 @@ $dark-green: #0F330A;
       border-top-right-radius: 5px;
       font-weight: bold;
       font-size: 16px;
+    }
+
+    &--play {
+      display: none;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      z-index: 1;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(0, 0, 0, 0.6);
+
+      img {
+        height: 40px;
+        width: 40px;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    &:hover {
+      .game-card__container--play {
+        display: flex;
+      }
     }
   }
 
@@ -82,12 +110,13 @@ $dark-green: #0F330A;
 
     /* ----- Ribbon ---------------------------------------*/
     &--text-container {
+      cursor: pointer;
       width: 55%;
       height: 20%;
       position: relative;
       top: 15%;
       right: -58%;
-      z-index: 2;
+      z-index: 3;
       overflow: hidden;
       transform: rotate(45deg);
       -ms-transform: rotate(45deg); /* IE 9 */
@@ -128,11 +157,11 @@ $dark-green: #0F330A;
       &::after {
         content: "";
         display: block;
-        height: 72px;
+        height: 200%;
         width: 13px;
         position: relative;
         bottom: 90px;
-        left: 154px;
+        left: 82%;
         transform: rotate(45deg);
         -ms-transform: rotate(45deg);
         -moz-transform: rotate(45deg);
@@ -162,6 +191,7 @@ $dark-green: #0F330A;
 
 @media only screen and (max-width: 750px) {
   .game-card__ribbon--text-container {
+
     .text-label {
       right: 40%;
     }
@@ -170,6 +200,9 @@ $dark-green: #0F330A;
 
 @media only screen and (max-width: 600px) {
   .game-card__ribbon--text-container {
+    &:after {
+      bottom: 94px;
+    }
     .text-label {
       right: 44%;
       top: 32%;
