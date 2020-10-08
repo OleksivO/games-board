@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, combineLatest, interval, Observable} from 'rxjs';
-import {filter, map, startWith, switchMap} from 'rxjs/operators';
+import {BehaviorSubject, combineLatest, empty, interval, Observable, of} from 'rxjs';
+import {catchError, filter, map, startWith, switchMap} from 'rxjs/operators';
 import {GameFullInfo, GameInfo} from '../../shared/models/game-info.model';
 import {toGameFullInfo} from '../../shared/utils/game-info.converter';
 import {JackpotInfo} from '../../shared/models/jackpot-info.model';
 
-const JACKPOTS_API = 'https://stage.whgstage.com/front-end-test/jackpots.php';
-const GAMES_API = 'https://stage.whgstage.com/front-end-test/games.php';
+const JACKPOTS_API = 'http://stage.whgstage.com/front-end-test/jackpots.php';
+const GAMES_API = 'http://stage.whgstage.com/front-end-test/games.php';
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +50,12 @@ export class GamesService {
   }
 
   private fetchGames(): Observable<GameInfo[]> {
-    return this.httpClient.get<GameInfo[]>(GAMES_API);
+    return this.httpClient.get<GameInfo[]>(GAMES_API).pipe(
+      catchError(error => {
+        console.error('Problem with fetching games', error);
+        return of([]);
+      })
+    );
   }
 
   private fetchJackpots(): Observable<JackpotInfo[]> {
@@ -58,7 +63,11 @@ export class GamesService {
     // startWith(0) is needed to start interval immediately
     return interval(5000).pipe(
       startWith(0),
-      switchMap(() => this.httpClient.get<JackpotInfo[]>(JACKPOTS_API))
+      switchMap(() => this.httpClient.get<JackpotInfo[]>(JACKPOTS_API)),
+      catchError(error => {
+        console.error('Problem with fetching jackpots', error);
+        return of([]);
+      })
     );
   }
 }
