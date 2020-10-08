@@ -6,8 +6,8 @@ import {GameFullInfo, GameInfo} from '../../shared/models/game-info.model';
 import {toGameFullInfo} from '../../shared/utils/game-info.converter';
 import {JackpotInfo} from '../../shared/models/jackpot-info.model';
 
-const JACKPOTS_API = 'http://stage.whgstage.com/front-end-test/jackpots.php';
-const GAMES_API = 'http://stage.whgstage.com/front-end-test/games.php';
+const JACKPOTS_API = 'https://stage.whgstage.com/front-end-test/jackpots.php';
+const GAMES_API = 'https://stage.whgstage.com/front-end-test/games.php';
 
 @Injectable({
   providedIn: 'root'

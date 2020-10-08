@@ -5,7 +5,7 @@ export const toGameFullInfo = (game: GameInfo, jackpotsInfo: JackpotInfo[], cate
   const gamesJackpot: JackpotInfo = jackpotsInfo.find(jackpot => jackpot.game === game.id);
   return {
     ...game,
-    image: game.image.replace('//', 'http://'),
+    image: game.image.replace('//', 'https://'),
     jackpot: gamesJackpot ? gamesJackpot.amount : null,
     highlightedCategory: setGameHighlightCategory(game.categories, category).toUpperCase()
   };
